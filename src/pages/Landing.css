@@ -1,0 +1,633 @@
+.landing-page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem 4rem;
+    flex: 1;
+    gap: 3rem;
+}
+
+.hero-content {
+    max-width: 600px;
+    z-index: 10;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    color: var(--nba-green);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+}
+
+.icon-pulse {
+    animation: flash 1.5s infinite alternate;
+}
+
+.hero-headline {
+    font-size: 6rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    text-shadow: 4px 4px 0px #000;
+    letter-spacing: -1px;
+}
+
+.hero-subline {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1.5rem 3rem;
+    font-size: 2.5rem;
+    background-color: var(--primary);
+    color: white;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0px #000;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    letter-spacing: 2px;
+}
+
+.cta-button:hover {
+    background-color: var(--nba-gold);
+}
+
+.cta-button:active {
+    transform: translate(6px, 6px);
+    box-shadow: 2px 2px 0px #000;
+}
+
+/* Court visual abstraction using pure CSS */
+.court-visual {
+    position: absolute;
+    right: 0;
+    width: 480px;
+    height: 480px;
+    border: 4px solid var(--border-color);
+    background: var(--panel-bg);
+    overflow: hidden;
+    box-shadow: 14px 14px 0px var(--nba-blue);
+    transform: rotate(3deg);
+    z-index: 1;
+}
+
+.court-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.paint-area {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 240px;
+    border: 3px solid var(--nba-red);
+    background-color: rgba(206, 17, 65, 0.1);
+}
+
+.free-throw-circle {
+    position: absolute;
+    bottom: 240px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 140px;
+    border: 3px solid var(--nba-gold);
+    border-radius: 50%;
+    border-bottom: 3px dashed var(--nba-gold);
+}
+
+.three-point-arc {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 340px;
+    border: 3px solid var(--nba-blue);
+    border-radius: 200px 200px 0 0;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--nba-gold);
+    border-top: 4px solid #000;
+    border-bottom: 4px solid #000;
+    padding: 12px 0;
+    color: #000;
+    white-space: nowrap;
+}
+
+.marquee {
+    display: inline-flex;
+    gap: 4rem;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee span {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Hero Visuals Wrapper */
+.hero-visuals {
+    position: relative;
+    width: 650px;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Vertical Scrolling Players */
+.scrolling-players-container {
+    height: 480px;
+    width: 180px;
+    overflow: hidden;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 5;
+    transform: rotate(-4deg);
+    border: 4px solid var(--border-color);
+    background-color: var(--panel-bg);
+    box-shadow: -10px 10px 0px var(--nba-red);
+    display: flex;
+    flex-direction: column;
+}
+
+.scrolling-players {
+    animation: scrollVertical 20s linear infinite;
+    display: flex;
+    flex-direction: column;
+}
+
+.player-scroll-img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    border-bottom: 2px solid var(--border-color);
+    background: radial-gradient(circle, #2d2d2d, #0d0d0d);
+}
+
+@keyframes scrollVertical {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+/* Latest Scores Panel */
+.scores-panel {
+    width: 380px;
+    background-color: var(--panel-bg);
+    border: 4px solid #000;
+    box-shadow: 12px 12px 0px var(--nba-gold);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.scores-header {
+    background-color: #0d0d0d;
+    padding: 1.5rem;
+    border-bottom: 4px solid #000;
+}
+
+.scores-header h2 {
+    font-size: 2.5rem;
+    color: var(--nba-gold);
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 0px #000;
+}
+
+.update-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--nba-green);
+    color: white;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 2px solid #000;
+    margin-bottom: 1rem;
+    box-shadow: 3px 3px 0px #000;
+}
+
+.next-update {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.scores-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.score-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem;
+    border-bottom: 3px solid #000;
+    transition: all 0.2s ease;
+    background-color: var(--panel-bg);
+}
+
+.score-card:last-child {
+    border-bottom: none;
+}
+
+.score-card:hover {
+    background-color: #222;
+    transform: translateX(-4px);
+    box-shadow: 4px 0px 0px var(--nba-gold);
+}
+
+.score-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-name {
+    font-size: 2.2rem;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.team-score {
+    font-size: 1.5rem;
+    color: var(--nba-orange);
+    font-weight: bold;
+}
+
+.score-divider {
+    color: #555;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.score-status {
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    background: var(--nba-red);
+    color: white;
+    font-weight: bold;
+    border: 2px solid #000;
+    box-shadow: 2px 2px 0px #000;
+}
+
+/* ===== All-Time Records Section ===== */
+.alltime-section {
+    padding: 3rem 4rem;
+    background-color: #0a0a0a;
+    border-top: 4px solid #1a1a1a;
+    border-bottom: 4px solid #1a1a1a;
+}
+
+.alltime-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.alltime-header h2 {
+    font-size: 3rem;
+    color: var(--text-color);
+    flex: 1;
+}
+
+.alltime-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.alltime-card {
+    background-color: var(--panel-bg);
+    border: 3px solid #000;
+    box-shadow: 8px 8px 0px #000;
+    overflow: hidden;
+    position: relative;
+}
+
+.alltime-card::before {
+    content: '';
+    display: block;
+    height: 4px;
+    background-color: var(--record-color);
+}
+
+.alltime-category {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #888;
+    padding: 1rem 1.5rem 0.75rem;
+    border-bottom: 2px solid #1a1a1a;
+    text-transform: uppercase;
+}
+
+.alltime-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1.5rem;
+    border-bottom: 1px solid #1a1a1a;
+    transition: background 0.2s ease;
+}
+
+.alltime-row:last-child {
+    border-bottom: none;
+}
+
+.alltime-row:hover {
+    background-color: #1e1e1e;
+}
+
+.alltime-row--gold {
+    background-color: rgba(253, 185, 39, 0.06);
+}
+
+.alltime-row--gold .alltime-rank {
+    color: var(--nba-gold);
+}
+
+.alltime-rank {
+    font-size: 1.1rem;
+    color: #555;
+    font-weight: bold;
+    min-width: 28px;
+}
+
+.alltime-thumb {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: radial-gradient(circle, #2a2a2a, #111);
+    border: 2px solid #222;
+    flex-shrink: 0;
+}
+
+.alltime-name {
+    font-size: 1rem;
+    color: var(--text-color);
+    flex: 1;
+    font-weight: 500;
+}
+
+.alltime-value {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* ===== YouTube Section ===== */
+.yt-section {
+    padding: 4rem;
+    background: linear-gradient(135deg, #0d0d0d 0%, #100a0a 100%);
+    border-top: 4px solid #1a1a1a;
+}
+
+.yt-inner {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* Channel Card */
+.yt-channel-card {
+    display: flex;
+    gap: 1.5rem;
+    background-color: var(--panel-bg);
+    border: 4px solid #000;
+    box-shadow: 10px 10px 0px #ff0000;
+    padding: 2.5rem;
+}
+
+.yt-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.yt-avatar {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0px #ff0000;
+    display: block;
+}
+
+.yt-live-dot {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 14px;
+    height: 14px;
+    background: var(--nba-green);
+    border-radius: 50%;
+    border: 2px solid #000;
+    animation: flash 1.5s infinite alternate;
+}
+
+.yt-channel-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.yt-channel-name {
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--text-color);
+}
+
+.yt-handle {
+    color: #ff0000;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.yt-bio {
+    font-size: 0.95rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+}
+
+.yt-stats {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.yt-stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.yt-stat-val {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+}
+
+.yt-stat-label {
+    font-size: 0.7rem;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+.yt-stat-divider {
+    width: 2px;
+    height: 40px;
+    background: #2a2a2a;
+}
+
+.yt-subscribe-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.85rem 1.5rem;
+    background: #ff0000;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0px #000;
+    letter-spacing: 1px;
+    align-self: flex-start;
+    transition: all 0.1s ease;
+}
+
+.yt-subscribe-btn:hover {
+    background: #cc0000;
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0px #000;
+}
+
+.yt-subscribe-btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0px #000;
+}
+
+/* Video Cards */
+.yt-videos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.yt-videos-label {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: #555;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.yt-video-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--panel-bg);
+    border: 3px solid #1a1a1a;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.yt-video-card:hover {
+    border-color: #ff0000;
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px #ff0000;
+}
+
+.yt-thumb {
+    width: 120px;
+    height: 70px;
+    background: #1a1a1a;
+    border: 2px solid #222;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.yt-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.yt-video-card:hover .yt-thumb-img {
+    transform: scale(1.05);
+}
+
+.yt-play-icon {
+    color: #ff0000;
+    opacity: 0.8;
+}
+
+.yt-video-card:hover .yt-play-icon {
+    opacity: 1;
+}
+
+.yt-video-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.yt-video-title {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.yt-video-meta {
+    font-size: 0.8rem;
+    color: #555;
+    letter-spacing: 1px;
+}

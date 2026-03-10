@@ -1,0 +1,465 @@
+/* --- SCOUTING HUB THEME [v2.0] --- */
+
+.feedback-page.locker-room {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #050505;
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.05), transparent 70%),
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 100%, 100% 2px, 3px 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow-x: hidden;
+    color: #fff;
+}
+
+/* Scanline and Grid Effects */
+.ambient-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.scanner-line {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 0, 0, 0.15);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    animation: scan 8s linear infinite;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes scan {
+    0% {
+        top: -10%;
+    }
+
+    100% {
+        top: 110%;
+    }
+}
+
+/* Scout Hub Container */
+.scout-hub {
+    width: 1100px;
+    max-width: 95%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    animation: hubFade 0.6s ease-out;
+}
+
+@keyframes hubFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scout-header {
+    border-left: 8px solid var(--nba-red);
+    padding-left: 2rem;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.live-status {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--nba-green);
+}
+
+.live-status .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--nba-green);
+    border-radius: 50%;
+}
+
+.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.scout-id {
+    font-size: 0.8rem;
+    color: #444;
+}
+
+.scout-header h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.9;
+    margin: 0;
+    letter-spacing: -3px;
+    color: #fff;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.title-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    text-shadow: -2px 0 var(--nba-red);
+    top: 0;
+    color: #fff;
+    background: #050505;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+    animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim {
+    0% {
+        clip: rect(10px, 9999px, 50px, 0);
+    }
+
+    20% {
+        clip: rect(60px, 9999px, 20px, 0);
+    }
+
+    100% {
+        clip: rect(40px, 9999px, 80px, 0);
+    }
+}
+
+.subtitle {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    letter-spacing: 5px;
+}
+
+/* Scout Form */
+.scout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.form-main-area {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* Profile Section (ID Card) */
+.scout-profile {
+    background: #0a0a0a;
+    border: 4px solid #1a1a1a;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+    box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.scout-profile::before {
+    content: 'PRESS_AUTH';
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--nba-red);
+    color: #000;
+    padding: 2px 10px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    font-family: 'Space Mono', monospace;
+}
+
+.profile-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #000;
+    border: 2px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.agent-img {
+    width: 130%;
+    height: 130%;
+    object-fit: contain;
+    object-position: top center;
+    margin-top: 15%;
+    filter: grayscale(1) contrast(1.2) brightness(0.8);
+    transition: all 0.5s ease;
+}
+
+.scout-profile:hover .agent-img {
+    filter: grayscale(0) contrast(1.1) brightness(1);
+    transform: scale(1.08);
+}
+
+.photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #0a0a0a 15%, transparent 60%);
+    pointer-events: none;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.input-wrap label {
+    font-size: 0.75rem;
+    color: var(--nba-gold);
+    display: block;
+    margin-bottom: 0.8rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+/* Input & Select Styling */
+.input-wrap input,
+.input-wrap select,
+.scout-rank select {
+    width: 100%;
+    background: #000;
+    border: none;
+    border-bottom: 2px solid #222;
+    color: #fff;
+    padding: 1rem 0;
+    font-family: inherit;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border-radius: 0;
+}
+
+.input-wrap select,
+.scout-rank select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+.input-wrap input:focus,
+.input-wrap select:focus,
+.scout-rank select:focus {
+    outline: none;
+    border-color: var(--nba-red);
+    background: #050505;
+}
+
+.scout-rank {
+    margin-top: 1rem;
+}
+
+/* Intel Area (Message Area) */
+.scout-intel {
+    background: #0a0a0a;
+    border: 4px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    min-height: 550px;
+    box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.intel-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+}
+
+.intel-header span {
+    font-size: 0.8rem;
+    color: #555;
+    letter-spacing: 2px;
+}
+
+.rating-selector {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.stars {
+    display: flex;
+    gap: 8px;
+}
+
+.stars button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #222;
+    transition: 0.2s;
+    padding: 0;
+}
+
+.stars button.active {
+    color: var(--nba-gold);
+}
+
+.stars button:hover {
+    transform: scale(1.2);
+}
+
+.scout-intel textarea {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 2.5rem;
+    color: var(--nba-gold);
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    resize: none;
+}
+
+.scout-intel textarea:focus {
+    outline: none;
+}
+
+.scout-submit-btn {
+    width: 100%;
+    padding: 2rem;
+    background: #fff;
+    color: #000;
+    border: none;
+    font-size: 2rem;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.scout-submit-btn:hover {
+    background: var(--nba-red);
+    color: #fff;
+    letter-spacing: 12px;
+    padding-left: 32px;
+}
+
+/* Success State */
+.transmission-success {
+    background: #000;
+    border: 4px solid var(--nba-green);
+    padding: 5rem;
+    position: relative;
+    animation: successFade 0.5s ease-out;
+}
+
+@keyframes successFade {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.terminal-log {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.terminal-log p {
+    color: var(--nba-green);
+    font-size: 0.9rem;
+    margin: 0;
+    font-family: 'Space Mono', monospace;
+}
+
+.terminal-log h2 {
+    font-size: 5rem;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 2rem 0;
+    letter-spacing: -2px;
+}
+
+.terminal-bar {
+    width: 100%;
+    height: 12px;
+    background: var(--nba-green);
+    margin-bottom: 2rem;
+}
+
+.scout-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #333;
+    margin-top: 2rem;
+}
+
+@media (max-width: 1050px) {
+    .form-main-area {
+        grid-template-columns: 1fr;
+    }
+
+    .scout-hub {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .scout-header h1 {
+        font-size: 4rem;
+    }
+}
